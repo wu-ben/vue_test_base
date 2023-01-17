@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="js/vue.js"></script>
+    <script src="js/dayjs.min.js"></script>
+    <title>格式化时间</title>
+</head>
+<body>
+    <div id="root">
+        <h2>现在的时间是</h2>
+        <h3>computed 写法： {{fmtTime}}</h3>
+        <h3>methods 写法： {{getFmtTime()}}</h3>
+        <h3>filter 写法： time1: {{time | timeFormater}}</h3>
+        <h3>filter 写法： time2: {{time | timeFormater('YYYY年MM月DD日')}}</h3>
+    </div>
+    <script>
+        const vm = new Vue({
+            components:{ 
+                
+            },
+            props:{ 
+                
+            },
+            data() {
+                return {
+                    time: 1672676859017
+                }
+            },
+            computed:{
+                fmtTime(){
+                    return dayjs(this.time).format('YYYY-MM-DD HH:mm:ss')
+                }
+            },
+            watch:{ },
+            created() {
+                
+            },
+            mounted() {
+                
+            },
+            methods: {
+                getFmtTime(){
+                    return dayjs(this.time).format('YYYY-MM-DD HH:mm:ss')
+                }
+            },
+            filters: {
+                timeFormater(value, str='YYYY-MM-DD HH:mm:ss') {
+                    return dayjs(value).format(str)
+                }
+            }
+        })
+        vm.$mount('#root')
+    </script>
+</body>
+</html>
